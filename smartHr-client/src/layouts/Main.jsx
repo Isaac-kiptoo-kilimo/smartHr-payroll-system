@@ -6,10 +6,12 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import Messages from '../pages/messages/Messages';
-import Profile from '../pages/profile/Profile'
+import AdminProfile from '../pages/profile/AdminProfile'
 import LoadingApp from '../components/loading/LoadingApp';
 import ProgressBar from '../components/loading/ProgressBar';
 import { useEffect, useState } from 'react';
+import EmployeeDashboard from '../pages/Dashboard/EmployeeDashboard';
+import AdminDashboard from '../pages/Dashboard/AdminDashboard';
 
 const MainContent = () => {
 const[isLoading,setIsLoading]=useState(true)
@@ -46,7 +48,10 @@ handleLoading()
             </div>
             <div className="mainPageContent">
            <Routes>
-         <Route path='/profile' element={ <Profile />}/>
+         <Route path='/admin/profile' element={ <AdminProfile />}/>
+         <Route path='/employee/profile' element={ <AdminProfile />}/>
+         <Route path='/admin/dashboard' element={ <AdminDashboard />}/>
+         <Route path='/employee/dashboard' element={ <EmployeeDashboard />}/>
          <Route path='/messages' element={<Messages/>}/>
    
            </Routes>

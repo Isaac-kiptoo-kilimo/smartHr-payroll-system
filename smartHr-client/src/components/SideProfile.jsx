@@ -30,8 +30,8 @@ function SideProfile() {
         <img className="side-imgn-profile"  onClick={handleProfile} width={60} src={userDetails.user && userDetails.user.profileImage} alt="avatar" />
       </div>
       <div className="leftprofile">
-        <p className="Profilename">{userDetails.user && userDetails.user.Username}</p>
-        <p className="username">{userDetails.user && userDetails.user.TagName}</p>
+        <p className="Profilename">{userDetails.user && userDetails.user.FirstName}</p>
+        <p className="Profilename">{userDetails.user && userDetails.user.LastName}</p>
       </div>
     </div>
   );

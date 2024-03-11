@@ -1,8 +1,6 @@
 import LogoIcon from '../assets/logo.png';
 import Responsive from '../assets/responsive.png';
 import ActiveNotification from '../assets/active-notification.png';
-import Profile from '../assets/Avatar1.png';
-import Chevron from '../assets/chevron-down.png';
 import Message from '../assets/message-circle.png';
 import SearchForm from '../components/shared/SearchForm';
 import NavIcon from '../components/NavIcon';
@@ -12,7 +10,9 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FaChevronDown } from "react-icons/fa6";
 import Notification from '../components/Notification/Notification';
-import Messages from '../pages/messages/Messages'
+import Messages  from '../pages/messages/Messages'
+
+
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -58,7 +58,11 @@ const Navbar = () => {
         <>
         <div className="navbar">
             <div className="nav-logo">
-                <img src={Responsive} alt="Responsive" />
+            <div className="responsive-icons">
+            <img src={Responsive} alt="Responsive" />
+
+            </div>
+
                 <img id='logo' src={LogoIcon} alt="LogoIcon" />
             </div>
             <div className="right-nav">
@@ -76,7 +80,10 @@ const Navbar = () => {
                       <img className="profile" onClick={handleProfile}  width={80} src={userDetails.user && userDetails.user.profileImage} alt="profile" />
 
                         {/* <NavIcon onClick={toggleLogout} url={Chevron}  /> */}
+                        <div>
                         <FaChevronDown onClick={toggleLogout}/>
+                        <h4>{userDetails.user && userDetails.user.role}</h4>
+                        </div>
 
                     </div>
                 </div>

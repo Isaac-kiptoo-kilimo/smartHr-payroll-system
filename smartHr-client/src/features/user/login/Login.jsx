@@ -69,13 +69,19 @@ const Login = () => {
           JSON.stringify(response.data.user)
         );
         SuccessToast(response.data.message);
-
+console.log("role",response.data.user.user.role);
         setLoginError("");
         // setLoginSuccess("Logged In successfully!");
-
-        setTimeout(() => {
-          navigate("/profile");
-        }, 2000);
+if(response.data.user.user.role==='Admin'){
+  setTimeout(() => {
+    navigate("/admin/dashboard");
+  }, 2000);
+}else{
+  setTimeout(() => {
+    navigate("/employee/dashboard");
+  }, 2000);
+}
+        
       } else {
         setLoginSuccess("");
         console.log(response.data);

@@ -2,21 +2,30 @@
 import './Sidebar.scss'
 import SideProfile from '../components/SideProfile'
 import SideMenu from '../components/SideMenu'
-import Shortcuts from '../components/Shortcuts'
+import { RiLogoutCircleLine } from "react-icons/ri";
+
 //import layouts
 
 const Sidebar = () => {
+    
     return(
-    <div>
-       <div className="SideProfile">
-        <SideProfile />
-       </div>
+    <div className='sidebar-column'>
+       
        <div className='SideMenu'>
         <SideMenu/>
        </div>
-       <div className="Shortcuts">
-        <Shortcuts/>
+
+       <div className="sidebar-bottom">
+       <div className="SideProfile">
+        <SideProfile />
        </div>
+       <div className="log-out">
+       <RiLogoutCircleLine />
+        <h4>Logout</h4>
+       </div>
+       </div>
+       
+      
     </div>
     )
 }

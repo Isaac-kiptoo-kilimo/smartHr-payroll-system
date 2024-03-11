@@ -1,52 +1,40 @@
 import React from 'react';
-import timeline from '../assets/layout-grid.png';
-import friends from '../assets/users.png';
-import groups from '../assets/star.png';
-import video from '../assets/video.png'
-import photos from '../assets/image.png';
-import events from '../assets/calendar.png';
+import { LuLayoutDashboard } from "react-icons/lu";
+import { FaRegListAlt } from "react-icons/fa";
+import { LuUsers } from "react-icons/lu";
+import { BiDollarCircle } from "react-icons/bi";
+
 import './SideMenu.scss';
 import { NavLink } from 'react-router-dom';
 
 function SideMenu() {
   const items = [
     {
-      name: 'Timeline',
-      icon: timeline,
-      path: '/timeline', 
+      name: 'Dashboard',
+      icon: <LuLayoutDashboard />,
+      path: '/dashboard', 
     },
     {
-      name: 'Friends',
-      icon: friends,
-      path: '/friends', 
+      name: 'Employees',
+      icon: <LuUsers />,
+      path: '/employees', 
     },
     {
-      name: 'Groups',
-      icon: groups,
-      path: '/groups', 
+      name: 'Attendance',
+      icon: <FaRegListAlt />,
+      path: '/attendance', 
     },
     {
-      name: 'Videos',
-      icon: video,
-      path: '/videos', 
-    },
-    {
-      name: 'Photos',
-      icon: photos,
-      path: '/photos', 
-    },
-    {
-      name: 'Events',
-      icon: events,
-      path: '/events', 
-    },
+      name: 'payroll',
+      icon: <BiDollarCircle />,
+      path: '/payroll', 
+    }   
+   
   ];
 
   return (
     <div className="side-menu">
-      <div className="menu-heading">
-        <h3>Menu</h3>
-      </div>
+      
       <div className="menu-down">
         {items &&
           items.map((item) => (
@@ -57,7 +45,7 @@ function SideMenu() {
               className={({ isActive }) => (isActive ? "menu-item active" : "menu-item")}
 
             >
-              <img src={item.icon} alt={item.name} />
+              {item.icon}
               <p>{item.name}</p>
             </NavLink>
             </div>
