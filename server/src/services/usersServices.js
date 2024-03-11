@@ -13,13 +13,14 @@ export const registerUserService = async (newUser) => {
       .input("JobPostion", sql.VarChar, newUser.JobPostion)
       .input("Address", sql.VarChar, newUser.Address)
       .input("WorkSchedule", sql.VarChar, newUser.WorkSchedule)
+      .input("Department", sql.VarChar, newUser.Department)
       .input("Phone_No", sql.VarChar, newUser.Phone_No)
       .input("Email", sql.VarChar, newUser.Email)
       .input("Password", sql.VarChar, newUser.Password)
       .input("Birth_Date", sql.VarChar, newUser.Birth_Date)
       .input("EmployeeID", sql.VarChar, newUser.EmployeeID)
       .query(
-        "INSERT INTO tbl_user(UserID,FirstName,LastName,Gender,JobPostion,Address,WorkSchedule,Phone_No,Email,Password,Birth_Date,EmployeeID) VALUES(@UserID,@FirstName,@LastName,@Gender,@JobPostion,@Address,@WorkSchedule,@Phone_No,@Email,@Password,@Birth_Date,@EmployeeID)"
+        "INSERT INTO tbl_user(UserID,FirstName,LastName,Gender,JobPostion,Address,WorkSchedule,Department,Phone_No,Email,Password,Birth_Date,EmployeeID) VALUES(@UserID,@FirstName,@LastName,@Gender,@JobPostion,@Address,@WorkSchedule,@Department,@Phone_No,@Email,@Password,@Birth_Date,@EmployeeID)"
       );
     logger.info("new user service", newRegisteredUser);
     return newRegisteredUser;
@@ -76,24 +77,36 @@ export const authenticateloginUserService = async (user) => {
 
 
 export const updateUserService = async (updateUser) => {
-  console.log("upadte user",updateUser);
+  console.log("update user", updateUser);
+
   try {
-    const updatedUser=await poolRequest()
-    .input('Username', sql.VarChar,updateUser.Username)
-    .input('UserID', sql.VarChar,updateUser.UserID)
-    .input('TagName', sql.VarChar,updateUser.TagName)
-    .input('Location', sql.VarChar,updateUser.Location)
-    .input('company_name', sql.VarChar,updateUser.company_name)
-    .input('website_link', sql.VarChar,updateUser.website_link)
-    .input('profileImage', sql.VarChar,updateUser.profileImage)
-  .query(`UPDATE tbl_user  SET Username = @Username, TagName = @TagName,Location = @Location , company_name=@company_name,website_link=@website_link , profileImage=@profileImage WHERE  userID = @userID`)
-console.log("updated",updateUser);
-  return updatedUser
-  
+    const updatedUser = await poolRequest()
+      .input("UserID", sql.VarChar, updateUser.UserID)
+      .input("FirstName", sql.VarChar, updateUser.FirstName)
+      .input("LastName", sql.VarChar, updateUser.LastName)
+      .input("Gender", sql.VarChar, updateUser.Gender)
+      .input("Address", sql.VarChar, updateUser.Address)
+      .input("Department", sql.VarChar, updateUser.Department)
+      .input("Phone_No", sql.VarChar, updateUser.Phone_No)
+      .input("Birth_Date", sql.VarChar, updateUser.Birth_Date)
+      .input("profileImage", sql.VarChar, updateUser.profileImage)
+      .query(`
+        UPDATE tbl_user
+        SET FirstName=@FirstName, LastName=@LastName, Gender=@Gender, 
+        Department=@Department, Address=@Address, Phone_No=@Phone_No, 
+        Birth_Date=@Birth_Date, profileImage=@profileImage
+        WHERE userID = @UserID
+      `);
+
+    console.log("updated", updateUser);
+    return updatedUser;
   } catch (error) {
-    return error
+    console.error("Error updating user", error);
+    return { error };
   }
 };
+
+
 
 export const updatePasswordService = async (updatePassword) => {
   try {
@@ -104,20 +117,8 @@ export const updatePasswordService = async (updatePassword) => {
     logger.info("updated password", updatedPassword);
     return updatedPassword;
   } catch (error) {
-    return { error: "Invalid Credentials" };
-  }
-};
-
-export const updateIsFriendService = async (updateIsFriend) => {
-  try {
-    const updatedIsFriend = await poolRequest()
-      .input("UserID", sql.VarChar, updateIsFriend.UserID)
-      .input("isFriend", sql.Bit, updateIsFriend.isFriend)
-      .query("UPDATE tbl_user SET isFriend=1 WHERE UserID=@UserID");
-    logger.info("updated isfriend", updatedPassword);
-    return updatedIsFriend;
-  } catch (error) {
-    return { error: "Invalid Credentials" };
+    console.log("error",error);
+    // return { error: "Invalid Credentials" };
   }
 };
 
@@ -155,18 +156,6 @@ export const getAllUsersService = async () => {
   }
 };
 
-export const getAllNonFriendUsersService = async (user) => {
-  try {
-    const allNonFriendUsers = await poolRequest().query(`
-      SELECT * FROM tbl_user WHERE isFriend = 0
-    `);
-
-    return allNonFriendUsers;
-  } catch (error) {
-    console.error('Error fetching non-friend users:', error.message);
-    return { error: 'Error fetching non-friend users' };
-  }
-};
 
 
 // Fetching delete user

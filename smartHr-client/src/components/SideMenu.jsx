@@ -6,7 +6,7 @@ import video from '../assets/video.png'
 import photos from '../assets/image.png';
 import events from '../assets/calendar.png';
 import './SideMenu.scss';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function SideMenu() {
   const items = [

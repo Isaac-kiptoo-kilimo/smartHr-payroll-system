@@ -3,10 +3,11 @@ import { Route,  Routes } from "react-router-dom";
 import "./App.scss";
 
 
-import MainContent from './layouts/Main';
+// import MainContent from './layouts/Main';
 
 import Login from "./features/user/login/Login";
 import SignUp from "./features/user/register/SignUp";
+import MainContent from "./layouts/Main";
 
 function App() {
   

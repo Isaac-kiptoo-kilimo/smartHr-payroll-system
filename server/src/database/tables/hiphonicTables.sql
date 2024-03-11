@@ -23,6 +23,7 @@ CREATE TABLE tbl_user (
     registeredDate DATETIME DEFAULT GETDATE(),
 );
 
+SELECT * FROM tbl_user
 
 -- Create Post Table
 CREATE TABLE post (

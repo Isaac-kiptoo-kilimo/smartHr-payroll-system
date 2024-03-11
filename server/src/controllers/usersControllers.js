@@ -60,7 +60,7 @@ export const registerNewUserController = async (req, res) => {
         LastName: LastName.toLowerCase(),
         Gender: Gender.toLowerCase(),
         JobPostion: JobPostion.toLowerCase(),
-        Department: JobPostion.toLowerCase(),
+        Department: Department.toLowerCase(),
         Address: Address.toLowerCase(),
         WorkSchedule: WorkSchedule.toLowerCase(),
         Email: Email.toLowerCase(),
@@ -110,39 +110,48 @@ export const loginUserController=async(req,res)=>{
 
 export const updateUserControllers = async (req, res) => {
   try {
-    const { Username, TagName, Location ,company_name,website_link , profileImage} = req.body;
-
+    const { FirstName, LastName, Phone_No, Gender, Birth_Date, Department, Address, profileImage } = req.body;
     const { UserID } = req.params;
-    console.log("user id",UserID);
+
+    console.log("user id", UserID);
+
     const existingUser = await getSingleUserServices(UserID);
 
     if (existingUser.rowsAffected[0] === 0) {
       return res.status(400).json({ message: "User not found" });
-    }else{
+    }
 
-    const { error } = updateUserValidator({ Username, TagName, Location ,company_name,website_link , profileImage});
+    const { error } = updateUserValidator({ FirstName, LastName, Phone_No, Gender, Birth_Date, Department, Address, profileImage });
+    
     if (error) {
       return res.status(400).json({ error: error.details[0].message });
     }
-// const lowerCaseUpdatedUser={
-//   Username: Username.toLowerCase(),
-//   TagName: TagName.toLowerCase(),
-//   Location: Location.toLowerCase(),
-//   company_name,
-//   website_link,
-//   profileImage
-// }
 
-// console.log("lowerCaseUpdatedUser",lowerCaseUpdatedUser);
-    const updatedUser = await updateUserService({ Username, TagName, Location ,company_name,website_link , profileImage,UserID});
+    const lowerCaseUpdatedUser = {
+      FirstName: FirstName.toLowerCase(),
+      LastName: LastName.toLowerCase(),
+      Gender: Gender.toLowerCase(),
+      Department: Department.toLowerCase(),
+      Address: Address.toLowerCase(),
+      Phone_No,
+      Birth_Date,
+      profileImage,
+      UserID, 
+    };
+
+    console.log("lowerCaseUpdatedUser", lowerCaseUpdatedUser);
+
+    const updatedUser = await updateUserService(lowerCaseUpdatedUser);
+
     console.log('Updated one', updatedUser);
 
-    if (updatedUser.error || updatedUser.rowsAffected<1) {
+    if (updatedUser.error || updatedUser.rowsAffected < 1) {
       return sendServerError(res, updatedUser.error);
+    } else {
+      return sendCreated(res, 'User updated successfully');
     }
-    return sendCreated(res, 'User updated successfully');
-  }
   } catch (error) {
+    console.error("Updating error", error);
     return sendServerError(res, 'Internal server error');
   }
 };
@@ -151,6 +160,7 @@ export const updateUserControllers = async (req, res) => {
 export const updateUserPasswordControllers = async (req, res) => {
   try {
     const { Password } = req.body;
+    console.log("req.body",req.body);
     const { UserID } = req.params;
 
     const { error } = updateUserPasswordValidator({ Password});
@@ -160,7 +170,7 @@ export const updateUserPasswordControllers = async (req, res) => {
     }
 
     const updatedPass = await updatePasswordService({ updatedhashedPassword, UserID });
-console.log('Updated one',updatedPass);
+    console.log('Updated one',updatedPass);
 
     if (updatedPass.error) {
       return sendServerError(res, updatedPass.error);

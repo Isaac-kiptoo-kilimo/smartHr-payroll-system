@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { BsThreeDots } from 'react-icons/bs';
-import useTimeAgo from '../../Hooks/UseTimeAgo';
+// import useTimeAgo from '../../Hooks/UseTimeAgo';
 import './NotificationItem.scss';
 import { usePatchNottificationMutation } from '../../features/notifications/notificationApi';
 
 const NotificationItem = ({ notification }) => {
-  const timeAgo = useTimeAgo(notification.created_at);
+  // const timeAgo = useTimeAgo(notification.created_at);
   const [isRead, setIsRead] = useState(true);
   const [clicked, setClicked] = useState(false); // New state for tracking click
 
@@ -38,7 +38,7 @@ const NotificationItem = ({ notification }) => {
       />
       <span>{notification.message}</span>
       <div className="notification-time">
-        <span>{timeAgo}</span>
+        {/* <span>{timeAgo}</span> */}
         <div className="not-icon">
           <BsThreeDots />
         </div>

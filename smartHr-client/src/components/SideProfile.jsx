@@ -1,5 +1,4 @@
 import React from "react";
-import Avatar from "../assets/Avatar.png";
 import "./SideProfile.scss";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";

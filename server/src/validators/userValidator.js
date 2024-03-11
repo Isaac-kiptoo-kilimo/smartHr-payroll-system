@@ -51,7 +51,6 @@ export  const updateUserValidator=(updateduser)=>{
       profileImage: joi.string().required(),
   })
    
-  Department
   return updateUserValidatorSchema.validate(updateduser);
 }
 

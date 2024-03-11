@@ -1,20 +1,17 @@
 // SignUp.jsx
 import React, { useEffect, useState } from 'react';
 import './SignUp.scss';
-import { useFormAction, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as yup from 'yup';
 import { yupResolver } from "@hookform/resolvers/yup";
-import SocialMedia1 from '../../../assets/social-media1.jpg';
 import { useForm } from "react-hook-form";
-import SocialMedia2 from '../../../assets/social-media2.jpg'
 import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { PiPasswordFill } from "react-icons/pi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useAddUserMutation } from '../userApi';
 import { IoPricetagsOutline } from "react-icons/io5";
 import { CiLocationOn } from "react-icons/ci";
-import { ErrorToast, ToasterContainer, SuccessToast } from '../../../toaster/Toaster'
+import {  ToasterContainer, SuccessToast } from '../../../toaster/Toaster'
 import { LoadingToast } from '../../../toaster/Toaster'; 
 
 
@@ -162,19 +159,6 @@ try{
                 </b>
               </p>
             </form>
-          </div>
-        </div>
-      </div>
-      <div className="row content-row">
-        <div className="col align-items-center flex-col">
-          <div className="img sign-up">
-            <img src={SocialMedia1} alt="" />
-            {/* <img src={SocialMedia2} alt="" /> */}
-          </div>
-          <div className="text sign-up">
-            <h2>
-              Join with us
-            </h2>
           </div>
         </div>
       </div>

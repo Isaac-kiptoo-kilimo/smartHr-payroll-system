@@ -7,17 +7,17 @@ Content-Type: application/json
 
 {
 
-    "FirstName": "titus3",
-    "LastName": "Munyoki",
-    "Gender": "male",
-    "JobPostion": "trainee",
-    "Address": "10 Nyeri",
+    "FirstName": "Leah",
+    "LastName": "Nyambura",
+    "Gender": "Female",
+    "JobPostion": "Designer",
+    "Address": "20 Nyeri",
     "WorkSchedule": "Night",
-    "Department": "Night",
-    "Birth_Date": "14/10/2003",
+    "Department": "ICT",
+    "Birth_Date": "14/10/2004",
     "Phone_No": "07105673837",
-    "Email": "titus4@gmail.com",
-    "Password": "123456@Tk"
+    "Email": "leahnyambura@gmail.com",
+    "Password": "123456@Ln"
 
 }
  
@@ -33,27 +33,28 @@ Content-Type: application/json
 
 
 ### update user
-PUT http://localhost:5000/api/users/update/1d3d8583-88de-4a9f-b750-ea65474a3809
+PUT http://localhost:5000/api/users/update/38ea7571-6708-40f6-b449-62b33dd272fa
 Content-Type: application/json
 Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxZDNkODU4My04OGRlLTRhOWYtYjc1MC1lYTY1NDc0YTM4MDkiLCJQYXNzd29yZCI6IiQyYiQwOCR0TXVZMjBZaERvNzN3TmtPT1N1LjllRXZmY2pLNzEzWnlCTDdKYU0wYmZRVkRTZVNxSE1MSyIsIkVtYWlsIjoidGl0dXMzQGdtYWlsLmNvbSIsImlhdCI6MTcwODk3NzY3NCwiZXhwIjoxNzA5MDY0MDc0fQ.pBE7xA_6CPnuTVTXYENwAruzraBeZNB2jyaYMzSmxys
 
 {
-    "Username":"tito4" ,
-    "TagName":"@tito4",
-    "Location":"Nyeri2",
-    "company_name":"Jitu",
-    "website_link":"https://www.instagram.com/",
+    "FirstName": "titus34",
+    "LastName": "Munyoki",
+    "Gender": "male",
+    "Address": "30 Nyeri",
+    "Department": "ICT",
+    "Birth_Date": "14/10/2004",
+    "Phone_No": "0720567395",
     "profileImage":"https://cdn.iconscout.com/icon/free/png-512/free-avatar-370-456322.png?f=webp&w=256"
 }
 
 
 ### update the user password
-PATCH http://localhost:5000/api/users/patch/
+PATCH http://localhost:5000/api/users/patch/d694411a-ef56-4a9e-9e90-450665a3d36b
 Content-Type: application/json
 
-
 {
-    "Password": "123456@Ia"
+    "Password": "123456@Ln"
 }
 
 ### Fetching/getting all users
