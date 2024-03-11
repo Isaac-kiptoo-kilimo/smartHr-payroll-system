@@ -7,13 +7,19 @@ export const registerUserService = async (newUser) => {
   try {
     const newRegisteredUser = await poolRequest()
       .input("UserID", sql.VarChar, newUser.UserID)
-      .input("Username", sql.VarChar, newUser.Username)
+      .input("FirstName", sql.VarChar, newUser.FirstName)
+      .input("LastName", sql.VarChar, newUser.LastName)
+      .input("Gender", sql.VarChar, newUser.Gender)
+      .input("JobPostion", sql.VarChar, newUser.JobPostion)
+      .input("Address", sql.VarChar, newUser.Address)
+      .input("WorkSchedule", sql.VarChar, newUser.WorkSchedule)
+      .input("Phone_No", sql.VarChar, newUser.Phone_No)
       .input("Email", sql.VarChar, newUser.Email)
       .input("Password", sql.VarChar, newUser.Password)
-      .input("TagName", sql.VarChar, newUser.TagName)
-      .input("Location", sql.VarChar, newUser.Location)
+      .input("Birth_Date", sql.VarChar, newUser.Birth_Date)
+      .input("EmployeeID", sql.VarChar, newUser.EmployeeID)
       .query(
-        "INSERT INTO tbl_user(UserID,Username,Email,Password,TagName,Location) VALUES(@UserID,@Username,@Email,@Password,@TagName,@Location)"
+        "INSERT INTO tbl_user(UserID,FirstName,LastName,Gender,JobPostion,Address,WorkSchedule,Phone_No,Email,Password,Birth_Date,EmployeeID) VALUES(@UserID,@FirstName,@LastName,@Gender,@JobPostion,@Address,@WorkSchedule,@Phone_No,@Email,@Password,@Birth_Date,@EmployeeID)"
       );
     logger.info("new user service", newRegisteredUser);
     return newRegisteredUser;
@@ -22,12 +28,26 @@ export const registerUserService = async (newUser) => {
     return { error: "Invalid Credentials" };
   }
 };
+// Department
+// UserID,
+// FirstName
+// LastName
+// Gender
+// JobPostion
+// Address
+// WorkSchedule
+// Email
+// Password
+// Phone_No,
+// EmployeeID,
+// Birth_Date
 
 export const authenticateloginUserService = async (user) => {
   try {
     const userFoundResponse = await poolRequest()
       .input("Email", sql.VarChar, user.Email)
-      .query("SELECT * FROM tbl_user WHERE Email=@Email");
+      .input("EmployeeID", sql.VarChar, user.EmployeeID)
+      .query("SELECT * FROM tbl_user WHERE Email=@Email AND EmployeeID=@EmployeeID");
     if (userFoundResponse.recordset[0]) {
     
       if(await bcrypt.compare(user.Password,userFoundResponse.recordset[0].Password)){
@@ -35,7 +55,8 @@ export const authenticateloginUserService = async (user) => {
         let token=jwt.sign({
           UserID:userFoundResponse.recordset[0].UserID,
           Password:userFoundResponse.recordset[0].Password,
-          Email:userFoundResponse.recordset[0].Email
+          Email:userFoundResponse.recordset[0].Email,
+          EmployeeID:userFoundResponse.recordset[0].EmployeeID
         },process.env.SECRET_KEY,{ expiresIn: "24h" })
         console.log("Token is",token);
         const {Password,...user}=userFoundResponse.recordset[0]

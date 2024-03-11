@@ -7,9 +7,9 @@ import {
   updateUserService,
   updatePasswordService,
   deleteUserServices,
-  updateIsFriendService,
-  getAllNonFriendUsersService,
 } from "../services/usersServices.js";
+import generateAndExportRandomNumber from '../utils/randomNumber.js';
+
 import {updateUserPasswordValidator, updateUserValidator, userLoginValidation, userRegistrationValidation }from "../validators/userValidator.js";
 import { v4 } from "uuid";
 import {sendServerError,sendCreated, notAuthorized} from '../helpers/helperFunctions.js'
@@ -28,21 +28,11 @@ export const getAllUsersController = async (req, res) => {
 };
 
 
-export const getAllNonFriendUsersController = async (req, res) => {
-  try {
-    const results = await getAllNonFriendUsersService();
-    const nonFriendUsers = results.recordset;
-    console.log("users", nonFriendUsers);
-    return res.status(200).json(nonFriendUsers);
-  } catch (error) {
-    console.error("Error fetching all users:", error);
-    return res.status(500).json("Internal server error");
-  }
-};
 
 export const registerNewUserController = async (req, res) => {
   try {
-    const { Username, Email, Password, TagName, Location } = req.body;
+    // generateAndExportRandomNumber
+    const { FirstName,LastName,Phone_No,Gender,Birth_Date,JobPostion,Department,Address,WorkSchedule,Email, Password} = req.body;
     console.log(req.body);
 
     const existingUser = await getUserByEmailService(Email);
@@ -54,21 +44,31 @@ export const registerNewUserController = async (req, res) => {
   }else{
  
     
-    const { error } = userRegistrationValidation({ Username, Email, Password, TagName, Location } );
+    const { error } = userRegistrationValidation({ FirstName,LastName,Phone_No,Gender,Birth_Date,JobPostion,Department,Address,WorkSchedule,Email, Password } );
     console.log("error",error);
     if (error) {
       return res.status(400).send(error.details[0].message);
     } else {
       const UserID = v4();
       const hashedPassword = await bcrypt.hash(Password, 8);  
-      
+      const EmployeeID=await generateAndExportRandomNumber()
+      console.log("new EmployeeID",EmployeeID);
+
       const registeredUser = { 
         UserID:UserID.toLowerCase(),
-        Username: Username.toLowerCase(),
+        FirstName: FirstName.toLowerCase(),
+        LastName: LastName.toLowerCase(),
+        Gender: Gender.toLowerCase(),
+        JobPostion: JobPostion.toLowerCase(),
+        Department: JobPostion.toLowerCase(),
+        Address: Address.toLowerCase(),
+        WorkSchedule: WorkSchedule.toLowerCase(),
         Email: Email.toLowerCase(),
         Password: hashedPassword,
-        TagName: TagName.toLowerCase(),
-        Location: Location.toLowerCase() };
+        Phone_No,
+        EmployeeID,
+        Birth_Date
+       };
         console.log("created user",registeredUser);
 
       const result = await registerUserService(registeredUser);
@@ -87,13 +87,13 @@ export const registerNewUserController = async (req, res) => {
 
 export const loginUserController=async(req,res)=>{
   try {
-    const { Email, Password } = req.body;
-      const { error } = userLoginValidation({ Email, Password });
+    const { Email, Password,EmployeeID } = req.body;
+      const { error } = userLoginValidation({ Email, Password ,EmployeeID});
     if (error) {
       return res.status(400).json({ error: error.details[0].message });
     }
 
-    const user = await authenticateloginUserService({ Email, Password });
+    const user = await authenticateloginUserService({ Email, Password,EmployeeID });
 
     if (user.error) {
       console.log(user.error);

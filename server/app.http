@@ -7,19 +7,27 @@ Content-Type: application/json
 
 {
 
-    "Username": "titus3" ,
-    "Email": "titus3@gmail.com" ,
-    "Password": "123456@Tk",
-    "TagName": "@tito",
-    "Location": "Nyeri"
-}
+    "FirstName": "titus3",
+    "LastName": "Munyoki",
+    "Gender": "male",
+    "JobPostion": "trainee",
+    "Address": "10 Nyeri",
+    "WorkSchedule": "Night",
+    "Department": "Night",
+    "Birth_Date": "14/10/2003",
+    "Phone_No": "07105673837",
+    "Email": "titus4@gmail.com",
+    "Password": "123456@Tk"
 
+}
+ 
 ### Login user
 POST http://localhost:5000/api/users/login
 Content-Type: application/json
 
 {
     "Email": "titus3@gmail.com",
+    "EmployeeID": "FT-462020",
     "Password": "123456@Tk"
 }
 
