@@ -1,11 +1,13 @@
 import './Button.scss'
 
-function Button({ btnicon,msg ,onClick}) {
+function Button({msg,imgBtn,onClick}) {
     return (
         <div>
             <button onClick={onClick} className='button'>
-               <img src={btnicon} alt="" />
+               {/* <img src={btnicon} alt="" /> */}
+               <span>{imgBtn}</span>
                 <span>{msg}</span>
+                
             </button>
         </div>
     )

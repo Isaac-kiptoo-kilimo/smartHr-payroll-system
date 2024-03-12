@@ -1,0 +1,27 @@
+.total-employees{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    padding: 2rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    border: 1px solid lightgray;
+    // gap: 0.9rem;
+    .total-items{
+       color: gray;
+       p{
+       font-size: 1.2rem;
+       }
+    }
+    .employee-icons{
+        font-size: 2.5rem;
+        padding: 0.5rem;
+        background-color: var(--light-gray);
+        border-radius: 50%;
+        width: 3.5rem;
+        height: 3.5rem;
+        color: var(--white);
+    }
+}
