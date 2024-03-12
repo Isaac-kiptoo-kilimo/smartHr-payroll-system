@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import "./EmployeeListTable.scss";
-import { HiDotsVertical } from "react-icons/hi";
+import "./EmployeeAttendance.scss";
 import { format } from "date-fns";
-import EditDeleteModal from "./EditDeleteModal";
 
-function EmployeeListTable({ user }) {
-  const [showIcons ,setShowIcons]=useState(false);
-  const handleEditDeleteModal=()=>{
-    setShowIcons(!showIcons)
-  }
+function EmployeeAttendance({ user }) {
+ 
   return (
     <div className="single-employee-row" key={user.UserID}>
       <div className="employee-name-image">
@@ -30,13 +25,10 @@ function EmployeeListTable({ user }) {
       <p>Active</p>
       <p>{format(user.registeredDate, "MMMM do yyyy")}</p>
       <p>{user.Phone_No}</p>
-      <div className="action-icon" onClick={handleEditDeleteModal}>
-        <HiDotsVertical />
-        
-      </div>
-      {showIcons && <EditDeleteModal />}
+      
+     
     </div>
   );
 }
 
-export default EmployeeListTable;
+export default EmployeeAttendance;

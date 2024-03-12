@@ -14,6 +14,7 @@ import EmployeeDashboard from '../pages/employee/dashboard/EmployeeDashboard';
 import AdminDashboard from '../pages/admin/Dashboard/AdminDashboard';
 import EmployeeSidebar from './EmployeeSideBar';
 import EmployeeList from '../pages/admin/employeelist/EmployeeList';
+import AdminViewAttendance from '../pages/admin/attendance/AdminViewAttendance';
 
 const MainContent = () => {
   const storedUser=JSON.parse(localStorage.getItem("loggedInUser"))
@@ -62,7 +63,8 @@ handleLoading()
          {/* <Route path='/employee/profile' element={ <AdminProfile />}/> */}
          <Route path='/admin/dashboard' element={ <AdminDashboard />}/>
          <Route path='/admin/employee' element={ <EmployeeList />}/>
-
+         <Route path='/admin/attendance' element={ <AdminViewAttendance/>}/>
+{/*  */}
          {/* Employee pages routes */}
          <Route path='/employee/dashboard' element={ <EmployeeDashboard />}/>
          
