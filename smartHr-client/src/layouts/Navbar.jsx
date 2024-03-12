@@ -65,9 +65,9 @@ console.log(TodayDate);
           <img id="logo" src={LogoIcon} alt="LogoIcon" />
         </div>
         <h3>{TodayDate}</h3>
-        <div className="nav-input">
+        {/* <div className="nav-input">
             <SearchForm />
-          </div>
+          </div> */}
         </div>
         
         <div className="right-nav">

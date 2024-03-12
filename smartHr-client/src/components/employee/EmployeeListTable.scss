@@ -1,0 +1,30 @@
+.single-employee-row {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid lightgray; 
+  margin-bottom: 0.5rem;
+.action-icon{
+      padding: .4rem 0.5rem;
+      display: fle;
+      align-items: center;
+      justify-content: center;
+  &:hover{ 
+  background-color: var(--gray);
+  border-radius: 50%;
+  color: white;
+  }
+}
+  .employee-name-image {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    .names {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+}

@@ -1,13 +1,13 @@
 // AdminDashboard.jsx
 import React from 'react';
-import Button from '../../components/shared/Button';
+import Button from '../../../components/shared/Button';
 import { GrAddCircle } from 'react-icons/gr';
 import './AdminDashboard.scss';
-import EmployeeCard from '../../components/dashboard/EmployeeCard';
-import { useGetUsersQuery } from '../../features/user/userApi';
+import EmployeeCard from '../../../components/dashboard/EmployeeCard';
+import { useGetUsersQuery } from '../../../features/user/userApi';
 import { TbUserSquareRounded } from 'react-icons/tb';
-import BarCharts from '../../components/charts/BarCharts';
-import { Data } from '../../utils/data'; 
+import BarCharts from '../../../components/charts/BarCharts';
+import { Data } from '../../../utils/data'; 
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 Chart.register(CategoryScale);

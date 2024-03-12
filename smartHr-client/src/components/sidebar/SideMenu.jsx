@@ -17,7 +17,7 @@ function SideMenu() {
     {
       name: 'Employees',
       icon: <LuUsers />,
-      path: 'admin/employees', 
+      path: 'admin/employee', 
     },
     {
       name: 'Attendance',

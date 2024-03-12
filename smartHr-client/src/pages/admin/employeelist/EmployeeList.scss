@@ -1,0 +1,65 @@
+// EmployeeList.scss
+.employee-container {
+  .employee-list-top {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem auto;
+
+    .add-staff {
+      button {
+        font-size: 1.2rem;
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 0.5rem;
+      }
+    }
+  }
+
+  .employee-table-list {
+    width: 100%;
+    margin: 0 auto;
+    
+
+    .table-head {
+      display: flex;
+      flex-wrap: wrap; 
+    //   justify-content: space-between;
+      font-size: 1rem;
+      background-color: var(--white);
+      padding: 1rem;
+      border-bottom: 1px solid var(--primary-color); 
+      margin-bottom: 0.5rem;
+      
+.name-title{
+    width: 20%;
+}
+.employeid-title{
+width: 12%;
+}
+   
+ .email-title{
+width: 20%;
+ }
+ .job-position-title{
+width: 10%;
+ }
+ .status-title{
+width: 10%;
+ }
+ .joining-date-title{
+width: 13%;
+ }
+ .mobile-no-title{
+width: 10%;
+ }
+ .action-title{
+width: 5%;
+ } 
+    }
+
+    
+  }
+}
+

@@ -10,9 +10,10 @@ import AdminProfile from '../pages/profile/AdminProfile'
 import LoadingApp from '../components/loading/LoadingApp';
 import ProgressBar from '../components/loading/ProgressBar';
 import { useEffect, useState } from 'react';
-import EmployeeDashboard from '../pages/Dashboard/EmployeeDashboard';
-import AdminDashboard from '../pages/Dashboard/AdminDashboard';
+import EmployeeDashboard from '../pages/employee/dashboard/EmployeeDashboard';
+import AdminDashboard from '../pages/admin/Dashboard/AdminDashboard';
 import EmployeeSidebar from './EmployeeSideBar';
+import EmployeeList from '../pages/admin/employeelist/EmployeeList';
 
 const MainContent = () => {
   const storedUser=JSON.parse(localStorage.getItem("loggedInUser"))
@@ -60,9 +61,11 @@ handleLoading()
             {/* Admin pages routes */}
          {/* <Route path='/employee/profile' element={ <AdminProfile />}/> */}
          <Route path='/admin/dashboard' element={ <AdminDashboard />}/>
+         <Route path='/admin/employee' element={ <EmployeeList />}/>
+
          {/* Employee pages routes */}
          <Route path='/employee/dashboard' element={ <EmployeeDashboard />}/>
-
+         
          {/* shared pages Routes */}
          <Route path='/profile' element={ <AdminProfile />}/>
          <Route path='/messages' element={<Messages/>}/>
