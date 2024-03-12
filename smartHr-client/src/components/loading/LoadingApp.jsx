@@ -7,8 +7,10 @@ import LoadingDot from './LoadingDot';
 const LoadingApp = () => {
   return (
     <div className="loading">
+        <div className="loading-logo">
         <img style={{width: "150px"}} src={Logo} alt="hiphonic App" />
-        <h4>Welcome To Hiphonic</h4>
+        </div>
+        
     <LoadingDot/>
     {/* <p>Loading your chats (1/5)</p> */}
   </div>

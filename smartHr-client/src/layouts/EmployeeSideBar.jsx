@@ -1,18 +1,18 @@
 //Styling file
 import './Sidebar.scss'
 import SideProfile from '../components/sidebar/SideProfile'
-import SideMenu from '../components/sidebar/SideMenu'
 import { RiLogoutCircleLine } from "react-icons/ri";
+import EmployeeSideMenu from '../components/sidebar/EmployeeSideMenu';
 
 //import layouts
 
-const Sidebar = () => {
+const EmployeeSidebar = () => {
     
     return(
     <div className='sidebar-column'>
        
        <div className='SideMenu'>
-        <SideMenu/>
+        <EmployeeSideMenu/>
        </div>
 
        <div className="sidebar-bottom">
@@ -29,4 +29,4 @@ const Sidebar = () => {
     </div>
     )
 }
-export default Sidebar
+export default EmployeeSidebar;

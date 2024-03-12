@@ -12,11 +12,16 @@ import ProgressBar from '../components/loading/ProgressBar';
 import { useEffect, useState } from 'react';
 import EmployeeDashboard from '../pages/Dashboard/EmployeeDashboard';
 import AdminDashboard from '../pages/Dashboard/AdminDashboard';
+import EmployeeSidebar from './EmployeeSideBar';
 
 const MainContent = () => {
+  const storedUser=JSON.parse(localStorage.getItem("loggedInUser"))
+  const storedRole=storedUser.user.role
+// console.log("storedUser",storedUser.user.role);
 const[isLoading,setIsLoading]=useState(true)
 const [progress,setProgress]=useState(0)
-
+const [role,setRole]=useState(storedRole)
+console.log("role");
 useEffect(()=>{
 
 const handleLoading=()=>{
@@ -43,15 +48,23 @@ handleLoading()
             <Navbar />
         </div>
           <div className="mainBottom">
-            <div className="sidebar">
+            {role=="Admin" ? (<div className="sidebar">
             <Sidebar />
-            </div>
+            </div>):(<div className="sidebar">
+            <EmployeeSidebar />
+            </div>)}
+            
+            
             <div className="mainPageContent">
            <Routes>
-         <Route path='/admin/profile' element={ <AdminProfile />}/>
-         <Route path='/employee/profile' element={ <AdminProfile />}/>
+            {/* Admin pages routes */}
+         {/* <Route path='/employee/profile' element={ <AdminProfile />}/> */}
          <Route path='/admin/dashboard' element={ <AdminDashboard />}/>
+         {/* Employee pages routes */}
          <Route path='/employee/dashboard' element={ <EmployeeDashboard />}/>
+
+         {/* shared pages Routes */}
+         <Route path='/profile' element={ <AdminProfile />}/>
          <Route path='/messages' element={<Messages/>}/>
    
            </Routes>

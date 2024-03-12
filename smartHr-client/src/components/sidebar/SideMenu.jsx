@@ -12,22 +12,22 @@ function SideMenu() {
     {
       name: 'Dashboard',
       icon: <LuLayoutDashboard />,
-      path: '/dashboard', 
+      path: 'admin/dashboard', 
     },
     {
       name: 'Employees',
       icon: <LuUsers />,
-      path: '/employees', 
+      path: 'admin/employees', 
     },
     {
       name: 'Attendance',
       icon: <FaRegListAlt />,
-      path: '/attendance', 
+      path: 'admin/attendance', 
     },
     {
       name: 'payroll',
       icon: <BiDollarCircle />,
-      path: '/payroll', 
+      path: 'admin/payroll', 
     }   
    
   ];
