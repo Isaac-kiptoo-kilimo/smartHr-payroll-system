@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./EmployeeList.scss";
 import SearchForm from "../../../components/shared/SearchForm";
 import Button from "../../../components/shared/Button";
 import { GrAddCircle } from "react-icons/gr";
 import { RiSearchLine } from "react-icons/ri";
 import { useGetUsersQuery } from "../../../features/user/userApi";
-
+import { createPortal } from 'react-dom';
+import AddStaff from "../../../features/user/register/AddStaff";
 import EmployeeListTable from "../../../components/employee/EmployeeListTable";
+
 
 const EmployeeList = () => {
   const { data: users } = useGetUsersQuery();
+  const [showModal, setShowModal] = useState(false);
 
   if (!users) {
     return <div>Loading...</div>;
@@ -20,11 +23,12 @@ const EmployeeList = () => {
   );
 
   return (
+  <>
     <div className="employee-container">
       <div className="employee-list-top">
         <SearchForm placeholder="search..." SearchIcon={<RiSearchLine />} />
         <div className="add-staff">
-          <Button imgBtn={<GrAddCircle />} msg="Add Staff" />
+          <Button onClick={() => setShowModal(true)} imgBtn={<GrAddCircle />} msg="Add Staff" />
         </div>
       </div>
       <div className="employee-table-list">
@@ -63,6 +67,15 @@ const EmployeeList = () => {
         </div>
       </div>
     </div>
+     <div className="modal-container">
+     {
+       showModal && createPortal(
+         <AddStaff setShowModal={setShowModal}  />,
+         document.body
+       )
+     }
+   </div>
+  </>
   );
 };
 
