@@ -44,7 +44,7 @@ export const registerNewUserController = async (req, res) => {
   }else{
  
     
-    const { error } = userRegistrationValidation({ FirstName,LastName,Phone_No,Gender,Birth_Date,JobPostion,Department,Address,WorkSchedule,Email, Password } );
+    const { error } = userRegistrationValidation({ FirstName,LastName,Phone_No,Gender,JobPostion,Department,Address,WorkSchedule,Email, Password } );
     console.log("error",error);
     if (error) {
       return res.status(400).send(error.details[0].message);

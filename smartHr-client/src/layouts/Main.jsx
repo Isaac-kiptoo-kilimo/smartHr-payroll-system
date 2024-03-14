@@ -64,7 +64,7 @@ handleLoading()
          <Route path='/admin/dashboard' element={ <AdminDashboard />}/>
          <Route path='/admin/employee' element={ <EmployeeList />}/>
          <Route path='/admin/attendance' element={ <AdminViewAttendance/>}/>
-{/*  */}
+
          {/* Employee pages routes */}
          <Route path='/employee/dashboard' element={ <EmployeeDashboard />}/>
          

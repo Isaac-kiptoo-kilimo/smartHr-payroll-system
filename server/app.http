@@ -7,17 +7,17 @@ Content-Type: application/json
 
 {
 
-    "FirstName": "Leah",
-    "LastName": "Nyambura",
-    "Gender": "Female",
-    "JobPostion": "Designer",
+    "FirstName": "Isaac",
+    "LastName": "Kilimo",
+    "Gender": "male",
+    "JobPostion": "developer",
     "Address": "20 Nyeri",
-    "WorkSchedule": "Night",
+    "WorkSchedule": "swing",
     "Department": "ICT",
-    "Birth_Date": "14/10/2004",
+    "Birth_Date": "2002/10/20",
     "Phone_No": "07105673837",
-    "Email": "leahnyambura@gmail.com",
-    "Password": "123456@Ln"
+    "Email": "isaackilimok2@gmail.com",
+    "Password": "123456@Ik"
 
 }
  

@@ -3,6 +3,9 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Data } from '../../utils/data';
 import './Barcharts.scss'
+
+
+
 const BarCharts = () => {
   const chartData = {
     labels: Data.map((entry) => entry.month),

@@ -1,8 +1,6 @@
 import React from 'react'
 import "./AdminViewAttendance.scss";
 import SearchForm from "../../../components/shared/SearchForm";
-import Button from "../../../components/shared/Button";
-import { GrAddCircle } from "react-icons/gr";
 import { RiSearchLine } from "react-icons/ri";
 import { useGetUsersQuery } from "../../../features/user/userApi";
 import EmployeeAttendance from '../../../components/attendance/EmployeeAttendance';

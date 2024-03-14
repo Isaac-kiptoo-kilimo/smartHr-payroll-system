@@ -17,7 +17,7 @@ export const registerUserService = async (newUser) => {
       .input("Phone_No", sql.VarChar, newUser.Phone_No)
       .input("Email", sql.VarChar, newUser.Email)
       .input("Password", sql.VarChar, newUser.Password)
-      .input("Birth_Date", sql.VarChar, newUser.Birth_Date)
+      .input("Birth_Date", sql.Date, newUser.Birth_Date)
       .input("EmployeeID", sql.VarChar, newUser.EmployeeID)
       .query(
         "INSERT INTO tbl_user(UserID,FirstName,LastName,Gender,JobPostion,Address,WorkSchedule,Department,Phone_No,Email,Password,Birth_Date,EmployeeID) VALUES(@UserID,@FirstName,@LastName,@Gender,@JobPostion,@Address,@WorkSchedule,@Department,@Phone_No,@Email,@Password,@Birth_Date,@EmployeeID)"
@@ -25,23 +25,13 @@ export const registerUserService = async (newUser) => {
     logger.info("new user service", newRegisteredUser);
     return newRegisteredUser;
   } catch (error) {
-    logger.error("Error while registering", error);
+    // logger.error("Error while registering", error);
+    console.log(error.error);
+    console.log(error.message);
     return { error: "Invalid Credentials" };
   }
 };
-// Department
-// UserID,
-// FirstName
-// LastName
-// Gender
-// JobPostion
-// Address
-// WorkSchedule
-// Email
-// Password
-// Phone_No,
-// EmployeeID,
-// Birth_Date
+
 
 export const authenticateloginUserService = async (user) => {
   try {

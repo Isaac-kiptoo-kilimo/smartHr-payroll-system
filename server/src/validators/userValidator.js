@@ -19,8 +19,8 @@ export const userRegistrationValidation = (user) => {
       )
       .required(),
     WorkSchedule: joi.string().required(),
-    Birth_Date: joi.string().required(),
-  });
+    // Birth_Date: joi.date().iso().required()
+    });
 
   return userRegistrationSchema.validate(user);
 };
